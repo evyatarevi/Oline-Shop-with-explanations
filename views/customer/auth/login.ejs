@@ -1,0 +1,30 @@
+<%-includes('../includes/head', {pageTitle: 'Login'})%>
+<link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/auth.css">
+</head>
+<body>
+    <%-includes('../includes/header')%>
+    <main>
+    <h1>Login</h1>
+    <form action="/login" method="POST"> <!-- this also has the advantage that post requests unlike get requests can have a post body, which can contain extra data. with get requests we can also submit data with help of query parameters but this not recommended when you are about to store data on the back end. -->
+        <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>"><!-- in this forum, we now have to make sure that the token is part of the  request when the form is submitted.-->
+        <!--  'name="_csrf"' - special name for which the CSRF package will look -->
+
+
+        <p> <!-- <p> - to mark and group your different form inputs and labels that belong together, so that we also have some space in between them. -->
+            <label for="email">Email</label> <!-- 'for' connect to 'id' -->
+            <input type="email" id="email" name="email" required> <!-- 'name' will be the key which we can later use on the server side to extract the value entered by the user in that input field. -->
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" minlength="6" required/>
+        </p>
+        <button class="btn" type="submit">Login</button>
+        <p id="switch-form"><a href="/signup">Create a new user</a></p>
+    </form>
+</main>
+    
+    <%-includes('../includes/footer')%>
+</body>
+</html>
+

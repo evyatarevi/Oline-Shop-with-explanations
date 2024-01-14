@@ -1,0 +1,26 @@
+/* styles for auth form specific because we in auth.css file*/
+h1{
+    text-align: center;
+    color: var(--color-gray-300);
+}
+
+form{
+    max-width: 25rem;
+    margin: var(--space-8) auto;
+    padding: var(--space-4);
+    background-color: var(--border-radius-medium);
+    text-align: center;
+/*text-align: the elements in the block elements
+like the inputs, labels, buttons and anchor elements
+are all inline elements.
+And therefore they will be affected by text align center,
+we can define it on the form because it's inheritable and inherit to p element. */
+}
+form a {
+    color: var(--color-primary-200);
+}
+
+form a:hover,
+form a:active {
+    color: var(--color-primary-200);
+}

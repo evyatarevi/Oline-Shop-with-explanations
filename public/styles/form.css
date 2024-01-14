@@ -1,0 +1,17 @@
+form hr{
+    border-color: var(--color-primary-200);
+    margin: var(--space-4);
+}
+label {
+    color: var(--color-gray-100);
+    display: block; /* forces a line break and forces this element to take the entire line and the document flow. */
+    margin-bottom: var(--space-2);
+}
+
+input, textarea {
+    font: inherit; /* browsers do to find default fonts for inputs and text areas. Instead, I want to use my main font, which I set up in base-CSS*/
+    padding: var(--space-2);
+    border-radius: var(--border-radius-small);  
+    border: none;
+    width: 90%; 
+}
