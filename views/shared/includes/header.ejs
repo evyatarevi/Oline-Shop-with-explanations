@@ -1,0 +1,14 @@
+<header>
+  <nav>
+    <ul>
+      <% if(locals.isAuth) { %>
+      <li>
+        <form action="/logout" method="POST"> <!-- 'POST' makes more sense because  when we logout, we plan on changing something on the server. We will change the session and remove any data from that session that identifies this user as being logged in.-->
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>"><!-- Since it is a post form, it also needs a CSRF token -->
+            <button>Logout</button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

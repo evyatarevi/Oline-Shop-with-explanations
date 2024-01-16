@@ -1,9 +1,9 @@
-<%-includes('../includes/head', {pageTitle: 'Signup'})%>
+<%-includes('../../shared/includes/head', {pageTitle: 'Signup'})%>
 <link rel="stylesheet" href="/styles/form.css">
 <link rel="stylesheet" href="/styles/auth.css">
 </head>
 <body>
-    <%-includes('../includes/header')%>
+    <%-includes('../../shared/includes/header')%>
 <main>
     <h1>Create New Account</h1>
     <form action="/signup" method="POST"> <!-- this also has the advantage that post requests unlike get requests can have a post body, which can contain extra data. with get requests we can also submit data with help of query parameters but this not recommended when you are about to store data on the back end. -->
@@ -50,6 +50,6 @@
         <p id="switch-form"><a href="/login">Login instead</a></p>
     </form>
 </main>
-    <%-includes('../includes/footer')%>
+    <%-includes('../../shared/includes/footer')%>
 </body>
 </html>
