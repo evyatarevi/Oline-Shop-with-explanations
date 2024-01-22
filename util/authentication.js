@@ -1,4 +1,4 @@
-/*get the request object,
+/*We need to get the request object,
 because we'll need that to access the session,
 then the user that we created with all the data
 that belongs to that user,

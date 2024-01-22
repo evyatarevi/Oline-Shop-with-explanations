@@ -6,6 +6,14 @@
     <%-includes('../../shared/includes/header')%>
     <main>
     <h1>Login</h1>
+
+    <% if(sessionData.errorMessage) { %>
+        <section class="alert">
+            <h2>Invalid Input</h2>
+            <p><%= sessionData.errorMessage %></p>
+        </section>
+    <% } %>
+
     <form action="/login" method="POST"> <!-- I use in 'POST' request because I will change my session to mark that user as logged in. -->
         <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>"><!-- in this forum, we now have to make sure that the token is part of the  request when the form is submitted.-->
         <!--  'name="_csrf"' - special name for which the CSRF package will look -->
@@ -13,11 +21,11 @@
 
         <p> <!-- <p> - to mark and group your different form inputs and labels that belong together, so that we also have some space in between them. -->
             <label for="email">Email</label> <!-- 'for' connect to 'id' -->
-            <input type="email" id="email" name="email" required> <!-- 'name' will be the key which we can later use on the server side to extract the value entered by the user in that input field. -->
+            <input type="email" id="email" name="email" value="<%=sessionData.email%>" required> <!-- 'name' will be the key which we can later use on the server side to extract the value entered by the user in that input field. -->
         </p>
         <p>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" minlength="6" required/>
+            <input type="password" id="password" name="password" minlength="6" value="<%=sessionData%>" required/>
         </p>
         <button class="btn" type="submit">Login</button>
         <p id="switch-form"><a href="/signup">Create a new user</a></p>

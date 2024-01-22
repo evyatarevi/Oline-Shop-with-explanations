@@ -20,6 +20,14 @@ class User{
         //'getUserWithSameEmail' will still return a promise, even though we haven't added async because findOne yields a promise and I'm returning it.
     }
 
+    existAlready = async () => {
+        const existingUser = await this.getUserWithSameEmail();
+        if(existingUser){
+            return true;
+        }
+        return false;
+    }
+
     comparePassword = (hashedPassword) => {
         return bcrypt.compare(this.password, hashedPassword);
     }

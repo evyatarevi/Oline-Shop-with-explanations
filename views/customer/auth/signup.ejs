@@ -6,6 +6,14 @@
     <%-includes('../../shared/includes/header')%>
 <main>
     <h1>Create New Account</h1>
+
+    <% if(sessionData.errorMessage) { %>
+        <section class="alert">
+            <h2>Invalid Input</h2>
+            <p><%= sessionData.errorMessage %></p>
+        </section>
+    <% } %>
+
     <form action="/signup" method="POST"> <!-- this also has the advantage that post requests unlike get requests can have a post body, which can contain extra data. with get requests we can also submit data with help of query parameters but this not recommended when you are about to store data on the back end. -->
         
         <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>"><!-- in this forum, we now have to make sure that the token is part of the  request when the form is submitted.-->
@@ -13,24 +21,24 @@
 
         <p> <!-- <p> - to mark and group your different form inputs and labels that belong together, so that we also have some space in between them. -->
             <label for="email">Email</label> <!-- 'for' connect to 'id' -->
-            <input type="email" id="email" name="email" required> <!-- 'name' will be the key which we can later use on the server side to extract the value entered by the user in that input field. -->
+            <input type="email" id="email" name="email" value="<%=sessionData.email%>" required> <!-- 'name' will be the key which we can later use on the server side to extract the value entered by the user in that input field. -->
         </p>
         <p>
             <label for="confirm-email">Confirm Email</label>
-            <input type="email" id="confirm-email" name="confirm-email" required/>
+            <input type="email" id="confirm-email" name="confirm-email" value="<%=sessionData.confirmEmail%>" required/>
         </p>
         <p>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" minlength="6" required/>
+            <input type="password" id="password" name="password" minlength="6" value="<%=sessionData.password%>" required/>
         </p>
         <hr>
         <p>
             <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" name="fullname" required/>
+            <input type="text" id="full-name" name="fullname" value="<%=sessionData.fullname%>" required/>
         </p>
         <p>
             <label for="street">Street</label>
-            <input type="text" id="street" name="street" required/>
+            <input type="text" id="street" name="street" value="<%=sessionData.street%>" required/>
         </p>
         <p>
             <label for="postal-code">Postal Code</label>
@@ -40,11 +48,12 @@
             name="postal" 
             minlength="5" 
             maxlength="5" 
+            value="<%=sessionData.postal%>"
             required/> <!-- I will still use type text here, not number or anything like this, because this should not be a number which the user enters here. It should be text, which looks like a number --> 
         </p>
         <p>
             <label for="city">City</label>
-            <input type="text" id="city" name="city" required/>
+            <input type="text" id="city" name="city" value="<%=sessionData.city%>" required/>
         </p>
         <button class="btn" type="submit">Submit</button>
         <p id="switch-form"><a href="/login">Login instead</a></p>
